@@ -94,7 +94,7 @@ button:hover {
     background-color: orange;
 }
 
-.computer-btn:disabled {
+button:disabled {
     background-color: rgba(71, 71, 71, 0.2);
     color: rgba(255, 166, 0, 0.2);
     border: 2px solid rgba(255, 166, 0, 0.2);
