@@ -1,11 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, Paper, Scissors</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./scripts.js" defer></script>
 </head>
+
 <body>
-<script src="./scripts.js"></script>
+    <div class="content">
+        <header>
+            <h1>Rock Paper Scissors</h1>
+        </header>
+
+        <div class="main">
+
+            <div class="player-side">
+                <div class="score" id="player-score">
+                    <h2>Player: 0</h2>
+                </div>
+
+                <div class="display" id="player-display">
+                    <h2></h2>
+                </div>
+
+                <div class="player-btns">
+                    <button class="player-btn">Rock</button>
+                    <button class="player-btn">Paper</button>
+                    <button class="player-btn">Scissors</button>
+                </div>
+            </div>
+
+            <div class="computer-side">
+                <div class="score" id="computer-score">
+                    <h2>Computer: 0</h2>
+                </div>
+
+                <div class="display" id="computer-display">
+                    <h2></h2>
+                </div>
+
+                <div class="computer-btns">
+                    <button class="computer-btn" id="computer-rock-btn" disabled>Rock</button>
+                    <button class="computer-btn" id="computer-paper-btn" disabled>Paper</button>
+                    <button class="computer-btn" id="computer-scissors-btn" disabled>Scissors</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="round-result">
+            <h2></h2>
+        </div>
+
+        <footer>
+
+        </footer>
+    </div>
 </body>
+
 </html>
