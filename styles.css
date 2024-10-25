@@ -5,8 +5,8 @@
 }
 
 body {
-    background-color: rgb(71, 71, 71);
-    color: orange;
+    background-color: black;
+    color: rgb(123, 0, 255);
 }
 
 .content {
@@ -17,31 +17,32 @@ body {
 }
 
 header {
-    margin: 10px 0 25px 0;
+    color: black;
+    background-color: rgb(123, 0, 255);
+    width: 100%;
+    margin: 0 0 25px 0;
+    text-align: center;
     font-size: 32px;
+    padding: 10px;
+    border: 2px solid rgb(123, 0, 255);
 }
 
 .main {
     display: flex;
-    width: 50%;
-}
-
-.player-side{
-    width: 50%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    width: 100%;
 }
 
+.player-side,
 .computer-side {
-    width: 50%;
-    height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+    border: 2px solid rgb(123, 0, 255);
 }
 
 .score {
@@ -59,7 +60,14 @@ header {
     align-items: center;
     height: 250px;
     width: 250px;
-    border: 2px solid orange;
+    border: 2px solid rgb(123, 0, 255);
+}
+
+.player-btns,
+.computer-btns {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 button {
@@ -68,9 +76,10 @@ button {
     margin: 10px;
     font-size: 24px;
     font-weight: 900;
-    color: orange;
-    background-color: rgb(71, 71, 71);
-    border: 2px solid orange;
+    color: rgb(123, 0, 255);
+    background-color: rgb(0, 0, 0);
+    border: 2px solid rgb(123, 0, 255);
+    border-radius: 15%;
 }
 
 .round-result {
@@ -81,7 +90,7 @@ button {
     width: 50%;
     margin: 25px;
     padding: 15px;
-    border-top: 2px solid orange;
+    border-top: 2px solid rgb(123, 0, 255);
 }
 
 .round-result h2 {
@@ -89,7 +98,7 @@ button {
 }
 
 .round-result h2:not(:first-child) {
-    color: rgba(255, 166, 0, 0.5);
+    color: rgba(123, 0, 255, 0.5);
 }
 
 .replay-btn {
@@ -97,17 +106,39 @@ button {
 }
 
 button:hover {
-    color: rgb(71, 71, 71);
-    background-color: orange;
+    color: rgb(0, 0, 0);
+    background-color: rgb(123, 0, 255);
 }
 
 button:disabled {
-    background-color: rgba(71, 71, 71, 0.2);
-    color: rgba(255, 166, 0, 0.2);
-    border: 2px solid rgba(255, 166, 0, 0.2);
+    background-color: black;
+    color: black;
+    border: 2px solid black;
 }
 
 #player-display,
 #computer-display {
     font-size: 100px;
+}
+
+@media screen and (max-width: 777px) {
+    .player-side,
+    .computer-side {
+        width: 250px;
+    }
+}
+
+@media screen and (max-width: 549px) {
+    .player-side,
+    .computer-side,
+    .display {
+        width: 150px;
+    }
+    .score {
+        font-size: 16px;
+    }
+    #player-display,
+    #computer-display {
+    font-size: 50px;
+    }
 }
