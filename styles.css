@@ -18,6 +18,7 @@ body {
 
 header {
     margin: 10px 0 25px 0;
+    font-size: 32px;
 }
 
 .main {
@@ -65,6 +66,7 @@ button {
     height: 50px;
     width: 100px;
     margin: 10px;
+    font-size: 24px;
     font-weight: 900;
     color: orange;
     background-color: rgb(71, 71, 71);
@@ -84,6 +86,10 @@ button {
 
 .round-result h2 {
     padding: 5px;
+}
+
+.round-result h2:not(:first-child) {
+    color: rgba(255, 166, 0, 0.5);
 }
 
 .replay-btn {
