@@ -18,12 +18,15 @@ const getComputerChoice = function() {
     choice = Math.floor(Math.random() * 3);
     if (choice === 0) {
         choice = "rock";
+        computerDisplay.innerHTML = '<i class="fa-solid fa-hand-back-fist"></i>';
     } else if (choice === 1) {
         choice = "paper";
+        computerDisplay.innerHTML = '<i class="fa-solid fa-scroll"></i>';
     } else {
         choice = "scissors";
+        computerDisplay.innerHTML = '<i class="fa-solid fa-scissors">';
     }
-    computerDisplay.textContent = choice.toUpperCase();
+    
     return choice;
 };
 
@@ -111,10 +114,20 @@ const resetGame = function() {
     }
 };
 
+const setPlayerDisplay = function(playerChoice) {
+    if (playerChoice === "rock") {
+        playerDisplay.innerHTML = '<i class="fa-solid fa-hand-back-fist">';
+    } else if (playerChoice === 'paper') {
+        playerDisplay.innerHTML = '<i class="fa-solid fa-scroll"></i>';
+    } else if (playerChoice === 'scissors') {
+        playerDisplay.innerHTML = '<i class="fa-solid fa-scissors"></i>';
+    }
+};
+
 document.querySelectorAll(".player-btn").forEach(btn => {
     btn.addEventListener("click", () => {
         let playerChoice = btn.textContent.toLowerCase();
-        playerDisplay.textContent = playerChoice.toUpperCase();
+        setPlayerDisplay(playerChoice);
         playRound(getComputerChoice(), playerChoice);
         playerScoreTxt.textContent = `Player: ${playerScore}`;
         computerScoreTxt.textContent = ` Computer: ${computerScore}`;
