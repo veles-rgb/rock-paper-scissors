@@ -52,6 +52,12 @@ const setPlayerDisplay = function(playerChoice) {
     }
 };
 
+const addResultText = function(container, text) {
+    const newElement = document.createElement("h2");
+    newElement.textContent = text;
+    container.insertBefore(newElement, container.firstChild);
+};
+
 const checkWinner = function() {
     if (playerScore > computerScore) {
         winner = "Player";
@@ -67,47 +73,37 @@ const checkWinner = function() {
 };
 
 const playRound = function(computerChoice, playerChoice) {
-    const newH2 = document.createElement("h2");
     if (
         (computerChoice == "rock" && playerChoice == "scissors") ||
         (computerChoice == "scissors" && playerChoice == "paper") ||
         (computerChoice == "paper" && playerChoice == "rock")
     ) {
         computerScore++;
-        roundResult.appendChild(newH2);
-        newH2.textContent = `Round ${currentRound}: Computer wins the round (${computerChoice} beats ${playerChoice})`;
+        addResultText(roundResult, `Round ${currentRound}: Computer wins the round (${computerChoice} beats ${playerChoice})`);
     } else if (
         (playerChoice == "rock" && computerChoice == "scissors") ||
         (playerChoice == "scissors" && computerChoice == "paper") ||
         (playerChoice == "paper" && computerChoice == "rock")
     ) {
         playerScore++;
-        roundResult.appendChild(newH2);
-        newH2.textContent = `Round ${currentRound}: Player wins the round (${playerChoice} beats ${computerChoice})`;
-    } else if (computerChoice == playerChoice || playerChoice == computerChoice) {
-        roundResult.appendChild(newH2);
-        newH2.textContent = `Round ${currentRound}: Round tie!`;
+        addResultText(roundResult, `Round ${currentRound}: Player wins the round (${playerChoice} beats ${computerChoice})`);
+    } else if (computerChoice === playerChoice) {
+        addResultText(roundResult, `Round ${currentRound}: Round tie!`);
     } else {
         console.log("Invalid input.");
-    };
-    roundResult.insertBefore(newH2, roundResult.firstChild);
+    }
 };
 
 const checkScore = function() {
-    const newH2 = document.createElement("h2");
-    if (playerScore == 5 || computerScore == 5) {
-        checkWinner()
-        roundResult.appendChild(newH2);
-        newH2.textContent = `${winner} wins the game: ${winnerScore} to ${loserScore}`
-        roundResult.insertBefore(newH2, roundResult.firstChild)
+    if (playerScore === 5 || computerScore === 5) {
+        checkWinner();
+        addResultText(roundResult, `${winner} wins the game: ${winnerScore} to ${loserScore}`);
         document.querySelectorAll(".player-btn").forEach(pbtn => {
             pbtn.disabled = true;
-        })
+        });
         addResetBtn();
-    } else {
-        return
-    };
-}
+    }
+};
 
 const addResetBtn = function() {
     const replayButton = document.createElement("button")
