@@ -30,6 +30,28 @@ const getComputerChoice = function() {
     return choice;
 };
 
+function getPlayerChoice(btn) {
+    const btnId = btn.getAttribute('id');
+    if (btnId === "rock") {
+        return "rock";
+    } else if (btnId === "paper") {
+        return "paper";
+    } else if (btnId === "scissors") {
+        return "scissors";
+    }
+    return null;
+}
+
+const setPlayerDisplay = function(playerChoice) {
+    if (playerChoice === "rock") {
+        playerDisplay.innerHTML = '<i class="fa-solid fa-hand-back-fist">';
+    } else if (playerChoice === 'paper') {
+        playerDisplay.innerHTML = '<i class="fa-solid fa-scroll"></i>';
+    } else if (playerChoice === 'scissors') {
+        playerDisplay.innerHTML = '<i class="fa-solid fa-scissors"></i>';
+    }
+};
+
 const checkWinner = function() {
     if (playerScore > computerScore) {
         winner = "Player";
@@ -114,23 +136,13 @@ const resetGame = function() {
     }
 };
 
-const setPlayerDisplay = function(playerChoice) {
-    if (playerChoice === "rock") {
-        playerDisplay.innerHTML = '<i class="fa-solid fa-hand-back-fist">';
-    } else if (playerChoice === 'paper') {
-        playerDisplay.innerHTML = '<i class="fa-solid fa-scroll"></i>';
-    } else if (playerChoice === 'scissors') {
-        playerDisplay.innerHTML = '<i class="fa-solid fa-scissors"></i>';
-    }
-};
-
 document.querySelectorAll(".player-btn").forEach(btn => {
     btn.addEventListener("click", () => {
-        let playerChoice = btn.textContent.toLowerCase();
+        const playerChoice = getPlayerChoice(btn);
         setPlayerDisplay(playerChoice);
         playRound(getComputerChoice(), playerChoice);
         playerScoreTxt.textContent = `Player: ${playerScore}`;
-        computerScoreTxt.textContent = ` Computer: ${computerScore}`;
+        computerScoreTxt.textContent = `Computer: ${computerScore}`;
         currentRound++;
         checkScore();
     });
